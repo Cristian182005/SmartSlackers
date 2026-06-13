@@ -5,6 +5,7 @@ from careers import CAREERS
 from scraper import MallaScraper
 from firestore_service import get_all_careers, get_career as fb_get_career, set_career
 from community_router import router as community_router
+from mentor_router import router as mentor_router
 
 app = FastAPI(title="Vocatio Scraper API", version="2.0.0")
 
@@ -16,6 +17,7 @@ app.add_middleware(
 )
 
 app.include_router(community_router)
+app.include_router(mentor_router)
 
 scraper = MallaScraper()
 

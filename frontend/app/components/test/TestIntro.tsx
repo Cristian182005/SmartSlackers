@@ -53,7 +53,7 @@ export default function TestIntro({ onStart }: { onStart: () => void }) {
       }}>
         10 preguntas · 20 segundos cada una · Resultado con IA
         <br />
-        Responde rápido — el tiempo suma puntos extra.
+        Responde rapido — el tiempo suma puntos extra.
       </p>
 
       {/* Stats row */}

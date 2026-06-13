@@ -69,7 +69,7 @@ export default function Home() {
             >
               Inicio
             </a>
-            <a className="transition-colors hover:text-red-500" href="#test">
+            <a className="transition-colors hover:text-red-500" href="test">
               Test Vocacional
             </a>
             <a

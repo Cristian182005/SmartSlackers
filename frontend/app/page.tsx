@@ -1,5 +1,7 @@
 "use client";
 
+import Navbar from "./components/Navbar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";

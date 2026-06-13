@@ -1,8 +1,7 @@
-﻿import Navbar from "../components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
-import Navbar from "@/components/Navbar";
 
 const resourceCards = [
   {

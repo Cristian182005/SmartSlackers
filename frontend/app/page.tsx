@@ -1,13 +1,5 @@
 "use client";
 
-import Navbar from "./components/Navbar";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { auth, db } from "../src/firebase/config";
-
 import Navbar from "@/components/Navbar";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +11,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { auth, db } from "../src/firebase/config";
 
 const highlights = [
   { title: "+2,500", description: "estudiantes acompañados" },
@@ -229,7 +226,7 @@ export default function Home() {
                               de compatibilidad con Desarrollo de Software
                             </p>
                           </div>
-                          <div className="h-24 w-24 rounded-full border-14 border-red-100 border-t-red-600 border-r-rose-500 border-b-red-500 border-l-rose-200 animate-spin-slow" />
+                          <div className="h-24 w-24 rounded-full border-[14px] border-red-100 border-t-red-600 border-r-rose-500 border-b-red-500 border-l-rose-200 animate-spin-slow" />
                         </div>
                       </CardContent>
                     </Card>

@@ -14,97 +14,97 @@ CAREERS = {
         "faculty": "Facultad de Medicina",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-medicina/medicina",
     },
-    "sistemas": {
+    "ingenieria-sistemas": {
         "name": "Ingenieria de Sistemas e Informatica",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-de-sistemas-e-informatica/malla-curricular",
     },
-    "civil": {
+    "ingenieria-civil": {
         "name": "Ingenieria Civil",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-civil/malla-curricular",
     },
-    "industrial": {
+    "ingenieria-industrial": {
         "name": "Ingenieria Industrial",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-industrial/malla-curricular",
     },
-    "mecatronica": {
+    "ingenieria-mecatronica": {
         "name": "Ingenieria Mecatronica",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-mecatronica/malla-curricular",
     },
-    "electronica": {
+    "ingenieria-electronica": {
         "name": "Ingenieria Electronica",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-electronica/malla-curricular",
     },
-    "ambiental": {
+    "ingenieria-ambiental": {
         "name": "Ingenieria Ambiental",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-ambiental/malla-curricular",
     },
-    "aeronautica": {
+    "ingenieria-aeronautica": {
         "name": "Ingenieria Aeronautica",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-aeronautica/malla-curricular",
     },
-    "automotriz": {
+    "ingenieria-automotriz": {
         "name": "Ingenieria Automotriz",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-automotriz/malla-curricular",
     },
-    "biomedica": {
+    "ingenieria-biomedica": {
         "name": "Ingenieria Biomedica",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-biomedica/malla-curricular",
     },
-    "electrica": {
+    "ingenieria-electrica": {
         "name": "Ingenieria Electrica y de Potencia",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-electrica-y-de-potencia/malla-curricular",
     },
-    "empresarial": {
+    "ingenieria-empresarial": {
         "name": "Ingenieria Empresarial",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-empresarial/malla-curricular",
     },
-    "mecanica": {
+    "ingenieria-mecanica": {
         "name": "Ingenieria Mecanica",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-mecanica/malla-curricular",
     },
-    "minas": {
+    "ingenieria-minas": {
         "name": "Ingenieria de Minas",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-de-minas/malla-curricular",
     },
-    "seguridad_industrial": {
+    "ingenieria-seguridad-industrial": {
         "name": "Ingenieria de Seguridad Industrial y Minera",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-de-seguridad-industrial-y-minera/malla-curricular",
     },
-    "telecomunicaciones": {
+    "ingenieria-telecomunicaciones": {
         "name": "Ingenieria de Telecomunicaciones",
         "faculty": "Facultad de Ingenieria",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-ingenieria/ingenieria-de-telecomunicaciones/malla-curricular",
     },
-    "administracion_banca": {
+    "administracion-banca": {
         "name": "Administracion Banca y Finanzas",
         "faculty": "Facultad de Negocios",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-negocios/administracion-banca-y-finanzas/malla-curricular",
     },
-    "administracion_empresas": {
+    "administracion": {
         "name": "Administracion de Empresas",
         "faculty": "Facultad de Negocios",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-negocios/administracion-de-empresas/malla-curricular",
     },
-    "negocios_internacionales": {
+    "relaciones-internacionales": {
         "name": "Administracion de Negocios Internacionales",
         "faculty": "Facultad de Negocios",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-negocios/administracion-de-negocios-internacionales/malla-curricular",
     },
-    "hotelera_turismo": {
+    "turismo": {
         "name": "Administracion Hotelera y de Turismo",
         "faculty": "Facultad de Negocios",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-negocios/administracion-hotelera-y-de-turismo/malla-curricular",
@@ -154,7 +154,7 @@ CAREERS = {
         "faculty": "Facultad de Salud",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-salud/odontologia/malla-curricular",
     },
-    "terapia_fisica": {
+    "terapia-fisica": {
         "name": "Terapia Fisica",
         "faculty": "Facultad de Salud",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-salud/tecnologia-medica-en-terapia-fisica-y-rehabilitacion/malla-curricular",
@@ -164,17 +164,17 @@ CAREERS = {
         "faculty": "Facultad de Comunicaciones",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-comunicaciones/ciencias-de-la-comunicacion/malla-curricular",
     },
-    "comunicacion_publicidad": {
+    "comunicacion-publicidad": {
         "name": "Comunicacion y Publicidad",
         "faculty": "Facultad de Comunicaciones",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-comunicaciones/comunicacion-y-publicidad/malla-curricular",
     },
-    "diseno_digital": {
+    "diseno-digital": {
         "name": "Diseno Digital Publicitario",
         "faculty": "Facultad de Comunicaciones",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-comunicaciones/diseno-digital-publicitario/malla-curricular",
     },
-    "diseno_grafico": {
+    "diseno-grafico": {
         "name": "Diseno Profesional Grafico",
         "faculty": "Facultad de Comunicaciones",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-comunicaciones/diseno-profesional-grafico/malla-curricular",
@@ -184,19 +184,39 @@ CAREERS = {
         "faculty": "Facultad de Arquitectura",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-arquitectura/arquitectura/malla-curricular",
     },
-    "diseno_interiores": {
+    "diseno-interiores": {
         "name": "Diseno Profesional de Interiores",
         "faculty": "Facultad de Arquitectura",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-arquitectura/diseno-profesional-de-interiores/malla-curricular",
     },
-    "educacion_inicial": {
+    "educacion": {
         "name": "Educacion Inicial",
         "faculty": "Facultad de Educacion",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-educacion/educacion-inicial/malla-curricular",
     },
-    "educacion_primaria": {
+    "educacion-primaria": {
         "name": "Educacion Primaria",
         "faculty": "Facultad de Educacion",
         "url": "https://www.utp.edu.pe/pregrado/facultad-de-educacion/educacion-primaria/malla-curricular",
+    },
+    "gastronomia": {
+        "name": "Gastronomia",
+        "faculty": "Facultad de Negocios",
+        "url": "",
+    },
+    "periodismo": {
+        "name": "Periodismo y Comunicacion",
+        "faculty": "Facultad de Comunicaciones",
+        "url": "https://www.utp.edu.pe/pregrado/facultad-de-comunicaciones/ciencias-de-la-comunicacion/malla-curricular",
+    },
+    "diseno-ux": {
+        "name": "Diseno UX/UI",
+        "faculty": "Facultad de Comunicaciones",
+        "url": "https://www.utp.edu.pe/pregrado/facultad-de-comunicaciones/diseno-digital-publicitario/malla-curricular",
+    },
+    "veterinaria": {
+        "name": "Medicina Veterinaria",
+        "faculty": "Facultad de Salud",
+        "url": "",
     },
 }

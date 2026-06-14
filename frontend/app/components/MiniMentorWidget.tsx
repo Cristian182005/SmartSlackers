@@ -9,12 +9,12 @@ const MENTOR_API_URL =
 const API_KEY = process.env.NEXT_PUBLIC_API_SECRET_KEY || "";
 
 const MINI_CAREERS = [
-  { id: "software",   icon: "💻", label: "Software" },
-  { id: "medicina",   icon: "🩺", label: "Medicina" },
-  { id: "derecho",    icon: "⚖️",  label: "Derecho" },
-  { id: "negocios",   icon: "📊", label: "Negocios" },
-  { id: "psicologia", icon: "🧠", label: "Psicología" },
-  { id: "ingenieria", icon: "🏗️",  label: "Ingeniería" },
+  { id: "software",         icon: "💻", label: "Software" },
+  { id: "medicina",         icon: "🩺", label: "Medicina" },
+  { id: "derecho",          icon: "⚖️", label: "Derecho" },
+  { id: "administracion",   icon: "📊", label: "Negocios" },
+  { id: "psicologia",       icon: "🧠", label: "Psicología" },
+  { id: "ingenieria-civil", icon: "🏗️", label: "Ingeniería" },
 ] as const;
 
 type MiniMsg = { role: "user" | "assistant"; content: string };

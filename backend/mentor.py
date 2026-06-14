@@ -217,8 +217,49 @@ REGLAS:
 }
 
 
+CAREER_TO_MENTOR = {
+    "ingenieria-civil": "ingenieria",
+    "ingenieria-industrial": "ingenieria",
+    "ingenieria-minas": "ingenieria",
+    "ingenieria-ambiental": "ingenieria",
+    "ingenieria-sistemas": "ingenieria",
+    "ingenieria-mecatronica": "ingenieria",
+    "ingenieria-electronica": "ingenieria",
+    "ingenieria-aeronautica": "ingenieria",
+    "ingenieria-automotriz": "ingenieria",
+    "ingenieria-biomedica": "ingenieria",
+    "ingenieria-electrica": "ingenieria",
+    "ingenieria-empresarial": "ingenieria",
+    "ingenieria-mecanica": "ingenieria",
+    "ingenieria-seguridad-industrial": "ingenieria",
+    "ingenieria-telecomunicaciones": "ingenieria",
+    "administracion": "negocios",
+    "administracion-banca": "negocios",
+    "diseno-ux": "diseno",
+    "diseno-digital": "diseno",
+    "diseno-grafico": "diseno",
+    "diseno-interiores": "diseno",
+    "enfermeria": "salud",
+    "odontologia": "salud",
+    "farmacia": "salud",
+    "nutricion": "salud",
+    "obstetricia": "salud",
+    "terapia-fisica": "salud",
+    "educacion": "educacion",
+    "educacion-primaria": "educacion",
+    "comunicacion": "comunicacion",
+    "comunicacion-publicidad": "comunicacion",
+    "periodismo": "comunicacion",
+    "gastronomia": "gastronomia",
+    "turismo": "turismo",
+    "relaciones-internacionales": "relaciones-internacionales",
+    "veterinaria": "veterinaria",
+}
+
+
 def get_mentor(career_id: str) -> dict[str, str]:
-    return MENTOR_PERSONALITIES.get(career_id, MENTOR_PERSONALITIES["default"])
+    mentor_key = CAREER_TO_MENTOR.get(career_id, career_id)
+    return MENTOR_PERSONALITIES.get(mentor_key, MENTOR_PERSONALITIES["default"])
 
 
 def build_system_message(career_id: str, locale: str = "es") -> str:

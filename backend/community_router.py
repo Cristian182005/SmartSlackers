@@ -11,9 +11,24 @@ POSTS_COL = "Posts"
 COMMENTS_COL = "Comentarios"
 
 CAREER_VALUES = {
-    "general", "software", "medicina", "derecho",
-    "arquitectura", "ingenieria-civil", "psicologia",
-    "marketing", "gastronomia",
+    "general",
+    "software", "medicina", "derecho", "arquitectura",
+    "ingenieria-civil", "ingenieria-industrial", "ingenieria-minas",
+    "ingenieria-ambiental", "ingenieria-sistemas", "ingenieria-mecatronica",
+    "ingenieria-electronica", "ingenieria-aeronautica", "ingenieria-automotriz",
+    "ingenieria-biomedica", "ingenieria-electrica", "ingenieria-empresarial",
+    "ingenieria-mecanica", "ingenieria-seguridad-industrial",
+    "ingenieria-telecomunicaciones",
+    "psicologia", "marketing", "gastronomia",
+    "administracion", "administracion-banca",
+    "contabilidad", "economia",
+    "enfermeria", "odontologia", "farmacia", "nutricion",
+    "obstetricia", "terapia-fisica",
+    "comunicacion", "comunicacion-publicidad",
+    "diseno-ux", "diseno-digital", "diseno-grafico", "diseno-interiores",
+    "educacion", "educacion-primaria",
+    "turismo", "relaciones-internacionales", "veterinaria",
+    "periodismo",
 }
 
 

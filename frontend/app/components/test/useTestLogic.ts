@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
-import { questions, careerResults } from "@/lib/questions";
+import { generateTest, careerResults } from "@/lib/questions";
+import type { Question } from "@/lib/questions";
 import type { Career } from "@/types/avatar";
 
 export const TEST_SESSION_KEY = "vocatio_test_session";
+export const QUESTIONS_SESSION_KEY = "vocatio_test_questions";
 
 export function useTestLogic() {
   const [phase, setPhase] = useState<
@@ -13,9 +15,10 @@ export function useTestLogic() {
   const [answers, setAnswers] = useState<string[]>([]);
   const [timeLeft, setTimeLeft] = useState(20);
   const [score, setScore] = useState(0);
+  const [currentQuestions, setCurrentQuestions] = useState<Question[]>([]);
 
   const nextQuestion = () => {
-    if (current + 1 >= questions.length) {
+    if (current + 1 >= currentQuestions.length) {
       setPhase("result");
     } else {
       setCurrent((c) => c + 1);
@@ -38,26 +41,29 @@ export function useTestLogic() {
     }
     const t = setTimeout(() => setTimeLeft((t) => t - 1), 1000);
     return () => clearTimeout(t);
-  }, [timeLeft, phase, handleTimeout, nextQuestion]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timeLeft, phase]);
 
-  // Persiste el progreso en localStorage mientras el test está activo
+  // Persiste progreso y preguntas actuales mientras el test está activo
   useEffect(() => {
     if (phase !== "question" && phase !== "feedback") return;
     if (answers.length === 0 && current === 0) return;
     localStorage.setItem(
       TEST_SESSION_KEY,
-      JSON.stringify({
-        answers,
-        current,
-        score,
-        savedAt: Date.now(),
-      }),
+      JSON.stringify({ answers, current, score, savedAt: Date.now() }),
     );
-  }, [answers, current, score, phase]);
+    if (currentQuestions.length > 0) {
+      localStorage.setItem(QUESTIONS_SESSION_KEY, JSON.stringify(currentQuestions));
+    }
+  }, [answers, current, score, phase, currentQuestions]);
 
-  // Inicia un test completamente nuevo (borra progreso previo)
+  // Inicia un test nuevo: genera 10 preguntas aleatorias del pool de 30
   const startTest = () => {
     localStorage.removeItem(TEST_SESSION_KEY);
+    localStorage.removeItem(QUESTIONS_SESSION_KEY);
+    const newQs = generateTest();
+    setCurrentQuestions(newQs);
+    localStorage.setItem(QUESTIONS_SESSION_KEY, JSON.stringify(newQs));
     setAnswers([]);
     setCurrent(0);
     setScore(0);
@@ -66,12 +72,19 @@ export function useTestLogic() {
     setTimeLeft(20);
   };
 
-  // Retoma un test guardado desde localStorage
+  // Retoma un test guardado, restaurando las mismas preguntas que se usaron
   const resumeTest = (
     savedAnswers: string[],
     savedCurrent: number,
     savedScore: number,
   ) => {
+    try {
+      const raw = localStorage.getItem(QUESTIONS_SESSION_KEY);
+      const savedQs: Question[] = raw ? JSON.parse(raw) : generateTest();
+      setCurrentQuestions(savedQs);
+    } catch {
+      setCurrentQuestions(generateTest());
+    }
     setAnswers(savedAnswers);
     setCurrent(savedCurrent);
     setScore(savedScore);
@@ -85,7 +98,7 @@ export function useTestLogic() {
       if (selected) return;
       setSelected(optionId);
 
-      const chosenOption = questions[current].options.find(
+      const chosenOption = currentQuestions[current]?.options.find(
         (o) => o.id === optionId,
       );
       if (chosenOption) {
@@ -97,7 +110,9 @@ export function useTestLogic() {
       setPhase("feedback");
       setTimeout(() => nextQuestion(), 1500);
     },
-    [selected, timeLeft, current],
+    // nextQuestion re-creates each render; including it would cause stale closure
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selected, timeLeft, current, currentQuestions],
   );
 
   const getResult = () => {
@@ -119,7 +134,6 @@ export function useTestLogic() {
     const winner = sorted[0][0];
     const total = valid.length;
 
-    // Ranking de las 2 carreras más afines
     const ranking = sorted.slice(0, 2).map(([key, cnt]) => ({
       careerKey: key as Career,
       percentage: Math.round((cnt / total) * 100),
@@ -143,8 +157,8 @@ export function useTestLogic() {
     timeLeft,
     score,
     answers,
-    question: questions[current],
-    total: questions.length,
+    question: currentQuestions[current],
+    total: currentQuestions.length || 10,
     startTest,
     resumeTest,
     handleAnswer,

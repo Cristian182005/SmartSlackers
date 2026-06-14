@@ -52,7 +52,7 @@ function getMentorCareers(t: (key: string) => string) {
       tagline: t("mentor.derechoTagline"),
     },
     {
-      id: "negocios",
+      id: "administracion",
       icon: "📊",
       color: "#7c3aed",
       tagline: t("mentor.negociosTagline"),
@@ -64,7 +64,7 @@ function getMentorCareers(t: (key: string) => string) {
       tagline: t("mentor.psicologiaTagline"),
     },
     {
-      id: "ingenieria",
+      id: "ingenieria-civil",
       icon: "🏗️",
       color: "#dc2626",
       tagline: t("mentor.ingenieriaTagline"),
@@ -81,9 +81,9 @@ function getCareerTitle(id: string, t: (key: string) => string): string {
     software: t("mentor.careerSoftware"),
     medicina: t("mentor.careerMedicina"),
     derecho: t("mentor.careerDerecho"),
-    negocios: t("mentor.careerNegocios"),
+    administracion: t("mentor.careerNegocios"),
     psicologia: t("mentor.careerPsicologia"),
-    ingenieria: t("mentor.careerIngenieria"),
+    "ingenieria-civil": t("mentor.careerIngenieria"),
   };
   return titleMap[id] || id;
 }

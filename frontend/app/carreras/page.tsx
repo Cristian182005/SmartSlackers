@@ -705,11 +705,6 @@ function ComparePanel({
                   </div>
                 </div>
 
-                {/* Universities */}
-                <div className="rounded-xl bg-slate-50 p-3 col-span-2 sm:col-span-3 transition hover:shadow-md hover:-translate-y-0.5">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-1">{t("carreras.universidades")}</p>
-                  <p className="text-xs text-slate-600 leading-relaxed">{c.universities.join(", ")}</p>
-                </div>
               </div>
 
               {/* Day in life */}

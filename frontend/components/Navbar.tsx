@@ -13,6 +13,8 @@ import { logout } from "@/src/services/authService";
 import AvatarCustomizer from "@/app/components/avatar/AvatarCustomizer";
 import { loadAvatar } from "@/src/services/avatarService";
 import { useTranslation, type Locale, localeNames, localeFlags } from "@/lib/i18n";
+import { useTheme } from "@/app/components/ThemeProvider";
+import ThemeToggle from "@/app/components/ThemeToggle";
 
 const LANGUAGES: { locale: Locale; label: string; flag: string }[] = [
   { locale: "es", label: "Español", flag: "🇵🇪" },
@@ -189,7 +191,8 @@ export default function Navbar({
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  const isDark = variant === "dark";
+  const { theme } = useTheme();
+  const isDark = variant === "dark" || theme === "dark";
 
   const wrapBg = isDark ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.80)";
   const wrapBorder = isDark ? "rgba(255,255,255,0.09)" : "rgba(255,255,255,0.55)";
@@ -295,6 +298,7 @@ export default function Navbar({
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
+          <ThemeToggle isDarkNav={isDark} />
           {rightSlot !== undefined ? (
             rightSlot
           ) : loading ? (

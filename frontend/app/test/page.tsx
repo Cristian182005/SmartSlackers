@@ -44,18 +44,6 @@ export default function TestPage() {
     return () => unsub();
   }, []);
 
-  // Advierte al cerrar/recargar el navegador si hay test en curso
-  useEffect(() => {
-    const inProgress = logic.phase === "question" || logic.phase === "feedback";
-    if (!inProgress) return;
-    const handler = (e: BeforeUnloadEvent) => {
-      e.preventDefault();
-      e.returnValue = "";
-    };
-    window.addEventListener("beforeunload", handler);
-    return () => window.removeEventListener("beforeunload", handler);
-  }, [logic.phase]);
-
   const handleResume = () => {
     if (!savedSession) return;
     logic.resumeTest(savedSession.answers, savedSession.current, savedSession.score);

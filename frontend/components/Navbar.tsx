@@ -86,23 +86,18 @@ export default function Navbar({
       }
       setUserEmail(fbUser.email || "");
       try {
-<<<<<<< Updated upstream
-        // Busca en ambas colecciones por compatibilidad
         for (const col of ["Usuarios", "usuarios"]) {
           const snap = await getDoc(doc(db, col, fbUser.uid));
           if (snap.exists()) {
             setUserName(snap.data().nombre || "");
             break;
           }
-=======
-        const snap = await getDoc(doc(db, "Usuarios", fbUser.uid));
-        if (snap.exists()) setUserName(snap.data().nombre || "");
+        }
         try {
           const a = await loadAvatar(fbUser.uid);
           setSavedAvatar(a);
-        } catch (err) {
+        } catch {
           // noop
->>>>>>> Stashed changes
         }
       } catch {
         // graceful — user info is display-only
@@ -156,7 +151,6 @@ export default function Navbar({
     router.push("/login");
   };
 
-<<<<<<< Updated upstream
   const markAllRead = async () => {
     if (!user?.uid || unreadCount === 0) return;
     localStorage.setItem("vocatio_notif_count", "0");
@@ -172,9 +166,6 @@ export default function Navbar({
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
-=======
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
->>>>>>> Stashed changes
 
   const isDark = variant === "dark";
 
@@ -243,9 +234,7 @@ export default function Navbar({
           {rightSlot !== undefined ? (
             rightSlot
           ) : loading ? (
-<<<<<<< Updated upstream
             <div className="hidden sm:flex items-center gap-2">
-              {/* Show bell with cached count while Firebase resolves */}
               {cachedCount > 0 && (
                 <div className="relative">
                   <button
@@ -270,12 +259,6 @@ export default function Navbar({
                 <div className={`h-8 w-8 rounded-full ${isDark ? "bg-white/15" : "bg-slate-200"}`} />
                 <div className={`h-7 w-12 rounded-lg ${isDark ? "bg-white/10" : "bg-slate-100"}`} />
               </div>
-=======
-            <div className="hidden sm:flex items-center gap-2 animate-pulse">
-              <div className={`hidden md:block h-3 w-20 rounded-full ${isDark ? "bg-white/15" : "bg-slate-200"}`} />
-              <div className={`h-8 w-8 rounded-full ${isDark ? "bg-white/15" : "bg-slate-200"}`} />
-              <div className={`h-7 w-12 rounded-lg ${isDark ? "bg-white/10" : "bg-slate-100"}`} />
->>>>>>> Stashed changes
             </div>
           ) : (
             <>
@@ -288,8 +271,6 @@ export default function Navbar({
                     </span>
                     <span className={`text-[10px] ${brandSub}`}>{userEmail}</span>
                   </div>
-<<<<<<< Updated upstream
-
                   {/* ── Notification bell ── */}
                   <div className="relative z-50">
                     <button
@@ -403,7 +384,7 @@ export default function Navbar({
                     </AnimatePresence>
                   </div>
 
-                  {/* Círculo rojo con inicial — al presionar abre el menú */}
+                  {/* Círculo rojo con inicial */}
                   <div className="relative" ref={avatarRef}>
                     <button
                       type="button"
@@ -413,7 +394,6 @@ export default function Navbar({
                       {displayName.charAt(0).toUpperCase()}
                     </button>
 
-                    {/* Menú desplegable del avatar */}
                     <AnimatePresence>
                       {avatarMenuOpen && (
                         <motion.div
@@ -444,14 +424,6 @@ export default function Navbar({
                       )}
                     </AnimatePresence>
                   </div>
-=======
-                  <div className="flex items-center gap-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-red-600 to-rose-500 text-white text-xs font-bold">{displayName.charAt(0).toUpperCase()}</div>
-
-                    <button onClick={() => setAvatarOpen(true)} title="Editar avatar" className="hidden sm:inline-flex h-8 w-8 items-center justify-center rounded-lg border border-transparent bg-white/10 hover:bg-white/20 text-sm transition">✨</button>
-                  </div>
-                  <button onClick={handleLogout} className={`hidden sm:inline-flex text-xs transition border rounded-lg px-2.5 py-1.5 ${logoutStyle}`}>Salir</button>
->>>>>>> Stashed changes
                 </>
               ) : null}
             </>
@@ -474,7 +446,6 @@ export default function Navbar({
               {NAV_LINKS.map((link) => (
                 <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className={`flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${isActive(link.href) ? mobileItemActive : mobileItemDefault}`}>
                   {link.label}
-<<<<<<< Updated upstream
                   {link.badge && (
                     <span className="rounded-full bg-red-600 px-1.5 py-0.5 text-[8px] font-bold text-white leading-none">
                       {link.badge}
@@ -505,13 +476,6 @@ export default function Navbar({
                     Cerrar sesión
                   </button>
                 </>
-=======
-                  {link.badge && <span className="rounded-full bg-red-600 px-1.5 py-0.5 text-[8px] font-bold text-white leading-none">{link.badge}</span>}
-                </a>
-              ))}
-              {user && (
-                <button onClick={handleLogout} className={`flex rounded-xl px-3 py-2.5 text-sm font-medium text-left transition-colors ${isDark ? "text-white/50 hover:bg-white/10" : "text-slate-500 hover:bg-slate-50"}`}>Cerrar sesión</button>
->>>>>>> Stashed changes
               )}
             </nav>
           </motion.div>

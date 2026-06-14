@@ -192,14 +192,10 @@ export default function AvatarCustomizer({
         {user ? (
           <motion.button
             onClick={handleSave}
-<<<<<<< Updated upstream
-            disabled={saving || disabled}
-=======
             disabled={saving}
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
->>>>>>> Stashed changes
             className="w-full max-w-[200px] py-2 rounded-xl text-sm font-medium text-white transition-opacity disabled:opacity-60"
             style={{ backgroundColor: accentColor }}
           >

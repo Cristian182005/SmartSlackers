@@ -1,13 +1,14 @@
 "use client";
 
 import { Profile } from "../page";
+import { useTranslation } from "@/lib/i18n";
 
 const ETAPAS_ADMISION = [
-  { id: "registro",    label: "Registro de postulante" },
-  { id: "documentos", label: "Carga de documentos" },
-  { id: "examen",     label: "Examen de admisión" },
-  { id: "resultado",  label: "Resultado" },
-  { id: "matricula",  label: "Matrícula" },
+  { id: "registro",    labelKey: "perfil.etapaRegistro" },
+  { id: "documentos", labelKey: "perfil.etapaDocumentos" },
+  { id: "examen",     labelKey: "perfil.etapaExamen" },
+  { id: "resultado",  labelKey: "perfil.etapaResultado" },
+  { id: "matricula",  labelKey: "perfil.etapaMatricula" },
 ];
 
 interface SeccionAdmisionProps {
@@ -15,6 +16,7 @@ interface SeccionAdmisionProps {
 }
 
 export default function SeccionAdmision({ profile }: SeccionAdmisionProps) {
+  const { t } = useTranslation();
   const currentEtapaIndex = ETAPAS_ADMISION.findIndex((e) => e.id === profile.etapaAdmision);
 
   return (
@@ -22,7 +24,7 @@ export default function SeccionAdmision({ profile }: SeccionAdmisionProps) {
       {/* ── Proceso de admisión ── */}
       <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_22px_70px_rgba(15,23,42,0.08)]">
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
-          Proceso de admisión
+          {t("perfil.procesoAdmision")}
         </p>
         <ol className="mt-6 space-y-0">
           {ETAPAS_ADMISION.map((etapa, index) => {
@@ -49,10 +51,10 @@ export default function SeccionAdmision({ profile }: SeccionAdmisionProps) {
                 </span>
                 <div className="pt-1">
                   <p className={`text-base font-semibold ${isCurrent ? "text-red-700" : isDone ? "text-slate-900" : "text-slate-500"}`}>
-                    {etapa.label}
+                    {t(etapa.labelKey)}
                   </p>
                   {isCurrent && (
-                    <p className="mt-1 text-sm text-slate-500">Estás en esta etapa actualmente.</p>
+                    <p className="mt-1 text-sm text-slate-500">{t("perfil.etapaActual")}</p>
                   )}
                 </div>
               </li>
@@ -61,7 +63,7 @@ export default function SeccionAdmision({ profile }: SeccionAdmisionProps) {
         </ol>
         {currentEtapaIndex < 0 && (
           <p className="mt-2 text-sm text-slate-500">
-            Aún no se ha registrado tu avance en el proceso de admisión.
+            {t("perfil.sinAvance")}
           </p>
         )}
       </div>
@@ -69,12 +71,12 @@ export default function SeccionAdmision({ profile }: SeccionAdmisionProps) {
       {/* ── Consejos rápidos ── */}
       <div className="rounded-[2rem] border border-slate-200 bg-red-50 p-6">
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
-          Consejos rápidos
+          {t("perfil.consejosRapidos")}
         </p>
         <ul className="mt-4 space-y-3 text-slate-700">
-          <li>1. Revisa tu correo para información del proceso de admisión.</li>
-          <li>2. Completa tu perfil en caso tengas más datos disponibles.</li>
-          <li>3. Usa el menú de Recursos para explorar carreras y admisión UTP.</li>
+          <li>{t("perfil.consejo1")}</li>
+          <li>{t("perfil.consejo2")}</li>
+          <li>{t("perfil.consejo3")}</li>
         </ul>
       </div>
     </div>

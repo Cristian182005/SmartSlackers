@@ -8,6 +8,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/src/firebase/config";
 import { careers } from "@/lib/careers";
 import { CarreraAnalizada } from "../page";
+import { useTranslation } from "@/lib/i18n";
 
 interface SeccionInteresesProps {
   user: User;
@@ -22,6 +23,7 @@ export default function SeccionIntereses({
   intereses,
   setIntereses,
 }: SeccionInteresesProps) {
+  const { t } = useTranslation();
   const [inputInteres, setInputInteres] = useState("");
   const [modoEdicion, setModoEdicion] = useState(false);
   const [guardando, setGuardando] = useState(false);
@@ -118,7 +120,7 @@ export default function SeccionIntereses({
       setCarrerasAnalizadas(enriquecidas);
     } catch (e) {
       console.error(e);
-      setErrorAnalisis("Ocurrió un error al analizar las carreras. Intenta de nuevo.");
+      setErrorAnalisis(t("perfil.errorAnalisis"));
     } finally {
       setAnalizando(false);
     }
@@ -130,22 +132,22 @@ export default function SeccionIntereses({
         {/* Header */}
         <div className="flex items-center justify-between mb-1">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
-            Mis intereses y hobbys
+            {t("perfil.misInteresesHobbys")}
           </p>
           {!modoEdicion && (
             <button
               onClick={handleEditar}
               className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700"
             >
-              ✏️ Editar
+              {t("perfil.editarBtn")}
             </button>
           )}
         </div>
 
         <p className="mb-5 text-sm text-slate-500">
           {modoEdicion
-            ? <>Escribe un interés y presiona <kbd className="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-mono text-slate-600">Enter</kbd> para agregarlo.</>
-            : "Tus intereses y hobbys registrados."}
+            ? <>{t("perfil.escribeInteresAntes")}<kbd className="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-mono text-slate-600">Enter</kbd>{t("perfil.escribeInteresDespues")}</>
+            : t("perfil.tusInteresesRegistrados")}
         </p>
 
         {/* ── MODO EDICIÓN ── */}
@@ -178,14 +180,14 @@ export default function SeccionIntereses({
                 value={inputInteres}
                 onChange={(e) => setInputInteres(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder={intereses.length === 0 ? "Ej: programación, música, diseño..." : "Agregar más..."}
+                placeholder={intereses.length === 0 ? t("perfil.ejemploInteres") : t("perfil.agregarMas")}
                 className="min-w-[160px] flex-1 bg-transparent text-sm text-slate-800 outline-none placeholder:text-slate-400"
               />
             </div>
 
             {intereses.length === 0 && (
               <p className="text-center text-sm text-slate-400 py-2">
-                Aún no has agregado intereses. ¡Empieza escribiendo arriba!
+                {t("perfil.sinInteresesEdicion")}
               </p>
             )}
 
@@ -198,10 +200,10 @@ export default function SeccionIntereses({
                 {guardando ? (
                   <span className="flex items-center gap-2">
                     <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                    Guardando...
+                    {t("common.guardando")}
                   </span>
                 ) : (
-                  "💾 Guardar"
+                  `💾 ${t("common.guardar")}`
                 )}
               </Button>
               <Button
@@ -209,7 +211,7 @@ export default function SeccionIntereses({
                 variant="outline"
                 className="border-slate-200 text-slate-600 hover:bg-slate-50"
               >
-                Cancelar
+                {t("common.cancelar")}
               </Button>
             </div>
           </div>
@@ -222,13 +224,13 @@ export default function SeccionIntereses({
               <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-slate-200 bg-slate-50 py-8 text-center">
                 <span className="text-3xl">🎯</span>
                 <p className="text-sm text-slate-500">
-                  Aún no tienes intereses registrados.
+                  {t("perfil.sinInteresesVista")}
                 </p>
                 <button
                   onClick={handleEditar}
                   className="rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
                 >
-                  + Agregar ahora
+                  {t("perfil.agregarAhora")}
                 </button>
               </div>
             ) : (
@@ -252,7 +254,7 @@ export default function SeccionIntereses({
                       exit={{ opacity: 0 }}
                       className="flex items-center gap-1.5 text-sm font-medium text-green-600"
                     >
-                      <span className="text-base">✓</span> Intereses guardados correctamente
+                      <span className="text-base">✓</span> {t("perfil.interesesGuardados")}
                     </motion.p>
                   )}
                 </AnimatePresence>
@@ -265,10 +267,10 @@ export default function SeccionIntereses({
                   {analizando ? (
                     <>
                       <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                      Analizando...
+                      {t("perfil.analizando")}
                     </>
                   ) : (
-                    <>🎓 Analizar posibles carreras</>
+                    <>🎓 {t("perfil.analizarCarreras")}</>
                   )}
                 </button>
               </>
@@ -298,10 +300,10 @@ export default function SeccionIntereses({
                   <div className="border-t border-slate-100 pt-6">
                     <div className="mb-4 flex items-center justify-between">
                       <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-600">
-                        Carreras recomendadas para ti
+                        {t("perfil.carrerasRecomendadasTi")}
                       </p>
                       <span className="rounded-full bg-red-50 px-2.5 py-1 text-xs font-bold text-red-600">
-                        Resultados generados
+                        {t("perfil.resultadosGenerados")}
                       </span>
                     </div>
 
@@ -352,7 +354,7 @@ export default function SeccionIntereses({
                     </div>
 
                     <p className="mt-4 text-center text-xs text-slate-400">
-                      Análisis generado por IA · Los resultados son orientativos
+                      {t("perfil.analisisIA")}
                     </p>
                   </div>
                 </motion.div>

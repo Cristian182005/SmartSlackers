@@ -275,7 +275,14 @@
     "etapaDocumentos": "Document upload",
     "etapaExamen": "Admission exam",
     "etapaResultado": "Results",
-    "etapaMatricula": "Enrollment"
+    "etapaMatricula": "Enrollment",
+    "seccionCuenta": "My Account",
+    "seccionIntereses": "Interests",
+    "seccionSkills": "Skills & Gaps",
+    "seccionAdmision": "Admission",
+    "seccionLogros": "Achievements",
+    "seleccionaCarreraSkills": "Select a career above to see your skills and gap analysis.",
+    "completaTestsParaDesbloquear": "Complete vocational tests to unlock your vocational profile and badges."
   },
   "simular": {
     "simularCarrera": "Simulate Career",

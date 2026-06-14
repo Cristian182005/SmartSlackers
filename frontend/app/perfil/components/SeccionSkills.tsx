@@ -6,6 +6,7 @@ import { db } from "@/src/firebase/config";
 import { careers } from "@/lib/careers";
 import SkillAssessment from "./SkillAssessment";
 import SkillGapDashboard from "./SkillGapDashboard";
+import { useTranslation } from "@/lib/i18n";
 
 interface SeccionSkillsProps {
   user: User;
@@ -15,15 +16,17 @@ interface SeccionSkillsProps {
 }
 
 export default function SeccionSkills({ user, colUsuario, carrera, setCarrera }: SeccionSkillsProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-6">
       {/* ── Selector de Carrera ── */}
       <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_22px_70px_rgba(15,23,42,0.08)]">
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600 mb-4">
-          Carrera de interés
+          {t("perfil.carreraInteres")}
         </p>
         <p className="text-sm text-slate-500 mb-4">
-          Selecciona la carrera que te interesa para desbloquear el análisis de skills.
+          {t("perfil.seleccionaCarrera")}
         </p>
         <select
           value={carrera || ""}
@@ -36,7 +39,7 @@ export default function SeccionSkills({ user, colUsuario, carrera, setCarrera }:
           }}
           className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-red-400 focus:ring-2 focus:ring-red-100"
         >
-          <option value="">— Selecciona una carrera —</option>
+          <option value="">{t("perfil.seleccionaCarreraOpcion")}</option>
           {careers.map((c) => (
             <option key={c.id} value={c.id}>
               {c.emoji} {c.title}
@@ -64,7 +67,7 @@ export default function SeccionSkills({ user, colUsuario, carrera, setCarrera }:
         <div className="flex flex-col items-center gap-3 rounded-[2rem] border border-dashed border-slate-200 bg-white p-12 text-center shadow-[0_22px_70px_rgba(15,23,42,0.04)]">
           <span className="text-4xl">📊</span>
           <p className="text-sm font-medium text-slate-500">
-            Selecciona una carrera arriba para ver tu análisis de skills y brechas.
+            {t("perfil.seleccionaCarreraSkills")}
           </p>
         </div>
       )}

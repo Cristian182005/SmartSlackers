@@ -275,7 +275,14 @@
     "etapaDocumentos": "Qillqanakuna hamuy",
     "etapaExamen": "Hamuyuq sayk'u",
     "etapaResultado": "Tukuq",
-    "etapaMatricula": "Qillqay"
+    "etapaMatricula": "Qillqay",
+    "seccionCuenta": "Nisqa",
+    "seccionIntereses": "Munankuykuna",
+    "seccionSkills": "Yachaykuna & Ukchakuna",
+    "seccionAdmision": "Yaykuy",
+    "seccionLogros": "Tawasaykuna",
+    "seleccionaCarreraSkills": "Hamut'ana carrerata chawpiraqmanta churay ukkuta yachaykuna chiqap kachkanki.",
+    "completaTestsParaDesbloquear": "Yuyasqa carrerapaq llakinchiyqa ukhunata qunanchis chiqap kachkanki."
   },
   "simular": {
     "simularCarrera": "Kamayuq Musyay",

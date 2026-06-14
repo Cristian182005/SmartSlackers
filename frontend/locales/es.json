@@ -275,7 +275,14 @@
     "etapaDocumentos": "Carga de documentos",
     "etapaExamen": "Examen de admisión",
     "etapaResultado": "Resultado",
-    "etapaMatricula": "Matrícula"
+    "etapaMatricula": "Matrícula",
+    "seccionCuenta": "Mi Cuenta",
+    "seccionIntereses": "Intereses",
+    "seccionSkills": "Skills & Brechas",
+    "seccionAdmision": "Admisión",
+    "seccionLogros": "Logros",
+    "seleccionaCarreraSkills": "Selecciona una carrera arriba para ver tu análisis de skills y brechas.",
+    "completaTestsParaDesbloquear": "Completa tests vocacionales para desbloquear tu perfil vocacional y badges."
   },
   "simular": {
     "simularCarrera": "Simular Carrera",

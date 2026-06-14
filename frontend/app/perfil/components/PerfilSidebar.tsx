@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslation } from "@/lib/i18n";
 
 const SECCIONES = [
-  { id: "cuenta",    icon: "👤", label: "Mi Cuenta" },
-  { id: "intereses", icon: "🎯", label: "Intereses" },
-  { id: "skills",    icon: "📊", label: "Skills & Brechas" },
-  { id: "admision",  icon: "🎓", label: "Admisión" },
-  { id: "logros",    icon: "🏆", label: "Logros" },
+  { id: "cuenta",    icon: "👤" },
+  { id: "intereses", icon: "🎯" },
+  { id: "skills",    icon: "📊" },
+  { id: "admision",  icon: "🎓" },
+  { id: "logros",    icon: "🏆" },
 ] as const;
 
 export type SeccionId = (typeof SECCIONES)[number]["id"];
@@ -18,6 +19,16 @@ interface PerfilSidebarProps {
 }
 
 export default function PerfilSidebar({ active, onChange }: PerfilSidebarProps) {
+  const { t } = useTranslation();
+
+  const labels: Record<SeccionId, string> = {
+    cuenta: t("perfil.seccionCuenta"),
+    intereses: t("perfil.seccionIntereses"),
+    skills: t("perfil.seccionSkills"),
+    admision: t("perfil.seccionAdmision"),
+    logros: t("perfil.seccionLogros"),
+  };
+
   return (
     <>
       {/* ── Desktop: sidebar vertical ── */}
@@ -42,7 +53,7 @@ export default function PerfilSidebar({ active, onChange }: PerfilSidebarProps) 
                 />
               )}
               <span className="text-lg">{s.icon}</span>
-              <span>{s.label}</span>
+              <span>{labels[s.id]}</span>
             </button>
           );
         })}
@@ -63,7 +74,7 @@ export default function PerfilSidebar({ active, onChange }: PerfilSidebarProps) 
               }`}
             >
               <span>{s.icon}</span>
-              <span>{s.label}</span>
+              <span>{labels[s.id]}</span>
             </button>
           );
         })}

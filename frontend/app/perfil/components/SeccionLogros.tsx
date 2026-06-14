@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { UserBadge } from "@/lib/badges";
 import BadgeDisplay from "@/app/components/BadgeDisplay";
 import { TestHistoryEntry } from "../page";
+import { useTranslation } from "@/lib/i18n";
 
 interface SeccionLogrosProps {
   badges: UserBadge[];
@@ -30,13 +31,15 @@ export default function SeccionLogros({
   careerStats,
   historyLoading,
 }: SeccionLogrosProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-6">
       {/* ── Badges / Logros ── */}
       <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_22px_70px_rgba(15,23,42,0.08)]">
         <div className="flex items-center justify-between mb-4">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
-            Badges y Logros
+            {t("perfil.badgesLogros")}
           </p>
           {totalXp > 0 && (
             <div className="flex items-center gap-1.5 rounded-xl bg-amber-50 px-2.5 py-1">
@@ -69,7 +72,7 @@ export default function SeccionLogros({
         return (
           <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_22px_70px_rgba(15,23,42,0.08)]">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
-              Tu perfil vocacional
+              {t("perfil.tuPerfilVocacional")}
             </p>
 
             <div className="flex flex-col items-center gap-3">
@@ -103,7 +106,7 @@ export default function SeccionLogros({
               <div className="text-center">
                 <p className="text-sm font-bold text-slate-900">{top.title}</p>
                 <p className="mt-0.5 text-xs text-slate-500">
-                  Basado en {top.count} test{top.count !== 1 ? "s" : ""}
+                  {t(top.count !== 1 ? "perfil.basadoEnTests" : "perfil.basadoEnTest", { count: top.count })}
                 </p>
               </div>
             </div>
@@ -111,7 +114,7 @@ export default function SeccionLogros({
             {second && (
               <div className="mt-5 border-t border-slate-100 pt-4">
                 <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wide text-slate-400">
-                  Segunda opción
+                  {t("perfil.segundaOpcion")}
                 </p>
                 <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50 p-3">
                   <div
@@ -141,13 +144,13 @@ export default function SeccionLogros({
                       <p className="text-sm font-bold text-slate-900">
                         {second.emoji} {second.title}
                       </p>
-                      <p className="text-xs text-slate-500">Segunda carrera más apta</p>
+                      <p className="text-xs text-slate-500">{t("perfil.segundaCarreraApta")}</p>
                     </div>
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/90 px-3 py-1.5 shadow-sm">
                       <span className="text-xs">🔍</span>
-                      <span className="text-xs font-semibold text-slate-600">Haz más tests para revelar</span>
+                      <span className="text-xs font-semibold text-slate-600">{t("perfil.hazMasTests")}</span>
                     </div>
                   </div>
                 </div>
@@ -162,7 +165,7 @@ export default function SeccionLogros({
         <div className="flex flex-col items-center gap-3 rounded-[2rem] border border-dashed border-slate-200 bg-white p-12 text-center">
           <span className="text-4xl">🏆</span>
           <p className="text-sm font-medium text-slate-500">
-            Completa tests vocacionales para desbloquear tu perfil vocacional y badges.
+            {t("perfil.completaTestsParaDesbloquear")}
           </p>
         </div>
       )}

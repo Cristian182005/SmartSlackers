@@ -7,7 +7,6 @@ const SECCIONES = [
   { id: "cuenta",    icon: "👤" },
   { id: "intereses", icon: "🎯" },
   { id: "skills",    icon: "📊" },
-  { id: "admision",  icon: "🎓" },
   { id: "logros",    icon: "🏆" },
   { id: "historial", icon: "📈" },
 ] as const;
@@ -26,7 +25,6 @@ export default function PerfilSidebar({ active, onChange }: PerfilSidebarProps) 
     cuenta: t("perfil.seccionCuenta"),
     intereses: t("perfil.seccionIntereses"),
     skills: t("perfil.seccionSkills"),
-    admision: t("perfil.seccionAdmision"),
     logros: t("perfil.seccionLogros"),
     historial: t("perfil.seccionHistorial"),
   };

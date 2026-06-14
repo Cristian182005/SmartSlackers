@@ -140,7 +140,6 @@ export default function SeccionCuenta({
           {[
             { label: t("perfil.nombre"),        value: profile.nombre        },
             { label: t("perfil.correo"),        value: profile.email         },
-            { label: t("perfil.rol"),           value: profile.rol           },
             { label: t("perfil.fechaRegistro"), value: profile.fechaRegistro },
           ].map((item) => (
             <div key={item.label} className="rounded-3xl border border-slate-200 bg-slate-50 p-5">

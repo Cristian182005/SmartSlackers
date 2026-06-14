@@ -600,107 +600,27 @@ export default function MentorPage() {
     async (careerId: string) => {
       setSelectedCareerId(careerId);
       setStarted(true);
-      setIsLoading(true);
+      setIsLoading(false);
       setConnectionError(null);
-      setIsConnected(null);
+      setIsConnected(true);
 
       try {
         const existingMessages = await loadChatHistory(careerId);
-
         if (existingMessages.length > 0) {
           setMessages(existingMessages);
-          setIsConnected(true);
-          setIsLoading(false);
-          return;
         }
-
-        const initialUserMessage: Message = {
-          role: "user",
-          content: t("mentor.saludoInicial"),
-        };
-
-        const res = await apiFetch(`/api/mentor`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            messages: [initialUserMessage],
-            careerId,
-            locale,
-          }),
-        });
-
-        if (!res.ok) {
-          setIsConnected(false);
-          throw new Error(
-            t("mentor.errorServidor"),
-          );
-        }
-
-        setIsConnected(true);
-        const reader = res.body!.getReader();
-        const decoder = new TextDecoder();
-        let assistantContent = "";
-        let mentorSet = false;
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-
-          const text = decoder.decode(value);
-          const lines = text.split("\n");
-
-          for (const line of lines) {
-            if (!line.startsWith("data: ")) continue;
-            const data = line.slice(6);
-            if (data === "[DONE]") break;
-
-            try {
-              const parsed = JSON.parse(data);
-              if (parsed.mentor && !mentorSet) {
-                setMentorInfo(parsed.mentor);
-                mentorSet = true;
-              } else if (parsed.content) {
-                assistantContent += parsed.content;
-                setMessages([{ role: "assistant", content: assistantContent }]);
-              } else if (parsed.error) {
-                throw new Error(parsed.error);
-              }
-            } catch {
-              // skip malformed lines
-            }
-          }
-        }
-
-        if (!assistantContent) {
-          throw new Error(t("mentor.respuestaInvalida"));
-        }
-
-        speak(assistantContent);
-
-        const finalMessages: Message[] = [
-          initialUserMessage,
-          { role: "assistant", content: assistantContent },
-        ];
-        await saveChatHistory(careerId, finalMessages);
-      } catch (error) {
-        setIsConnected(false);
-        const errorMsg =
-          error instanceof Error
-            ? error.message
-            : t("mentor.errorDesconocido");
-        setConnectionError(errorMsg);
-        setMessages([]);
-      } finally {
-        setIsLoading(false);
+      } catch {
+        // chat history is optional
       }
     },
-    [loadChatHistory, saveChatHistory, speak, t],
+    [loadChatHistory],
   );
 
-  const sendMessage = useCallback(async () => {
-    if (!input.trim() || isLoading || !selectedCareerId) return;
+  const sendMessage = useCallback(async (forcedContent?: string) => {
+    const content = (forcedContent ?? input).trim();
+    if (!content || isLoading || !selectedCareerId) return;
 
-    const userMessage: Message = { role: "user", content: input.trim() };
+    const userMessage: Message = { role: "user", content };
     const newMessages = [...messages, userMessage];
 
     setMessages(newMessages);
@@ -918,15 +838,15 @@ export default function MentorPage() {
       {/* Messages Area */}
       <div className="flex-1 overflow-y-auto px-4 py-6">
         <div className="mx-auto max-w-4xl">
-          {/* Welcome message if no messages yet */}
+          {/* Welcome header + preset questions */}
           {messages.length === 0 && !isLoading && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col items-center py-12 text-center"
+              className="flex flex-col items-center py-8 text-center"
             >
               <div
-                className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl text-2xl text-white shadow-lg"
+                className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl text-2xl text-white shadow-lg"
                 style={{
                   background: `linear-gradient(135deg, ${careerColor}, ${careerColor}bb)`,
                 }}
@@ -936,9 +856,27 @@ export default function MentorPage() {
               <h2 className="text-lg font-bold text-slate-900">
                 {t("mentor.entrevistaDe")} {careerInfo?.title || selectedCareerId}
               </h2>
-              <p className="mt-1 max-w-sm text-sm text-slate-500">
-                {t("mentor.tuMentorTeDara")}
-              </p>
+              <div className="mt-5 flex flex-wrap justify-center gap-2">
+                {[
+                  "¿Empezaste con esa carrera y la terminaste?",
+                  "¿Cuál fue tu desafío más grande en esta carrera?",
+                  "¿Entraste a la carrera por tus padres o por ti mismo?",
+                  "¿Qué es lo que más valoras de tu carrera?",
+                ].map((q) => (
+                  <motion.button
+                    key={q}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => {
+                      setInput(q);
+                      setTimeout(() => sendMessage(q), 0);
+                    }}
+                    className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-left text-sm text-slate-600 shadow-sm transition hover:border-red-200 hover:bg-red-50 hover:text-red-700"
+                  >
+                    {q}
+                  </motion.button>
+                ))}
+              </div>
             </motion.div>
           )}
 
@@ -1028,7 +966,7 @@ export default function MentorPage() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={sendMessage}
+              onClick={() => sendMessage()}
               disabled={!input.trim() || isLoading}
               className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-rose-500 text-white shadow-lg shadow-red-500/25 transition-all disabled:opacity-40 disabled:shadow-none disabled:cursor-not-allowed"
             >

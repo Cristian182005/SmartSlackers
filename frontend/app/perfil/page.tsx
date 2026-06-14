@@ -13,7 +13,6 @@ import PerfilSidebar, { SeccionId } from "./components/PerfilSidebar";
 import SeccionCuenta from "./components/SeccionCuenta";
 import SeccionIntereses from "./components/SeccionIntereses";
 import SeccionSkills from "./components/SeccionSkills";
-import SeccionAdmision from "./components/SeccionAdmision";
 import SeccionLogros from "./components/SeccionLogros";
 import SeccionHistorial from "./components/SeccionHistorial";
 import { useTranslation } from "@/lib/i18n";
@@ -23,7 +22,6 @@ import { useTranslation } from "@/lib/i18n";
 export type Profile = {
   nombre: string;
   email: string;
-  rol: string;
   fechaRegistro: string;
   carrera?: string;
   telefono?: string;
@@ -75,7 +73,7 @@ export default function PerfilPage() {
   // Auth & profile
   const [user,    setUser]    = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile>({
-    nombre: "", email: "", rol: "Estudiante", fechaRegistro: "",
+    nombre: "", email: "", fechaRegistro: "",
   });
   const [loading, setLoading] = useState(true);
 
@@ -160,7 +158,6 @@ export default function PerfilPage() {
       setProfile({
         nombre:        (foundProfile?.nombre        as string) || displayName || email.split("@")[0] || "Usuario",
         email,
-        rol:           (foundProfile?.rol           as string) || "Estudiante",
         fechaRegistro: foundProfile?.fechaRegistro
           ? (() => {
               const v = foundProfile.fechaRegistro;
@@ -351,10 +348,6 @@ export default function PerfilPage() {
                 carrera={profile.carrera}
                 setCarrera={(value) => setProfile((prev) => ({ ...prev, carrera: value }))}
               />
-            )}
-
-            {activeSection === "admision" && (
-              <SeccionAdmision profile={profile} />
             )}
 
             {activeSection === "logros" && (

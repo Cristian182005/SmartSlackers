@@ -6,6 +6,7 @@ import {
   showBadgeNotification,
   trackBadgeEvent,
 } from "@/src/services/badgeService";
+import { apiFetch } from "@/lib/api";
 import { onAuthStateChanged } from "firebase/auth";
 import {
   deleteDoc,
@@ -27,9 +28,6 @@ type MentorInfo = {
   name: string;
   title: string;
 };
-
-const MENTOR_API_URL =
-  process.env.NEXT_PUBLIC_MENTOR_API_URL || "http://127.0.0.1:8000";
 
 const MENTOR_CAREERS = [
   {
@@ -601,7 +599,7 @@ export default function MentorPage() {
             "Hola, estoy listo para comenzar la entrevista. Por favor preséntate y empecemos.",
         };
 
-        const res = await fetch(`${MENTOR_API_URL}/api/mentor`, {
+        const res = await apiFetch(`/api/mentor`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -690,7 +688,7 @@ export default function MentorPage() {
     setConnectionError(null);
 
     try {
-      const res = await fetch(`${MENTOR_API_URL}/api/mentor`, {
+      const res = await apiFetch(`/api/mentor`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

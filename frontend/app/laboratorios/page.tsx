@@ -7,8 +7,10 @@ import Navbar from "@/components/Navbar";
 import { useTranslation } from "@/lib/i18n";
 
 type Lab = {
-  nameKey: string;
-  descKey: string;
+  nameKey?: string;
+  descKey?: string;
+  name?: string;
+  desc?: string;
   img: string;
 };
 
@@ -855,10 +857,10 @@ function LabGallery() {
                   UTP
                 </div>
                 <h3 className="mt-1 text-base font-bold text-slate-900 leading-snug">
-                  {t(lab.nameKey)}
+                  {lab.name ?? t(lab.nameKey ?? "")}
                 </h3>
                 <p className="mt-2 text-sm text-slate-500 leading-relaxed">
-                  {t(lab.descKey)}
+                  {lab.desc ?? t(lab.descKey ?? "")}
                 </p>
               </div>
             </motion.div>

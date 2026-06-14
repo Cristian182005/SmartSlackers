@@ -21,7 +21,6 @@ export async function GET() {
           skills: c.skills,
           skillRequirements: c.skillRequirements,
           dayInLife: c.dayInLife,
-          universities: c.universities,
           outlook: c.outlook,
           duration: c.duration,
           nowDoing: c.nowDoing,

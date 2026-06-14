@@ -4,6 +4,7 @@ import "./globals.css";
 import BadgeToast from "@/app/components/BadgeToast";
 import { I18nProvider } from "@/lib/i18n";
 import FloatingAvatarGuide from "@/app/components/FloatingAvatarGuide";
+import { ThemeProvider } from "@/app/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,12 +32,22 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        {/* Aplica tema antes del primer paint para evitar flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('vocatio-theme');if(t==='dark'){document.documentElement.classList.add('dark');return;}if(t==='light')return;if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
-        <I18nProvider>
-          {children}
-          <BadgeToast />
-          <FloatingAvatarGuide />
-        </I18nProvider>
+        <ThemeProvider>
+          <I18nProvider>
+            {children}
+            <BadgeToast />
+            <FloatingAvatarGuide />
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

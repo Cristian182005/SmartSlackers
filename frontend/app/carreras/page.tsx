@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import { AREAS, careers as staticCareers, type Career } from "@/lib/careers";
+import { apiFetch } from "@/lib/api";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState, useCallback } from "react";
 import { collection, getDocs, query, where, limit } from "firebase/firestore";
@@ -9,9 +10,6 @@ import { db } from "@/src/firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/src/firebase/config";
 import { trackBadgeEvent, showBadgeNotification } from "@/src/services/badgeService";
-
-const API_BASE =
-  process.env.NEXT_PUBLIC_MENTOR_API_URL || "http://127.0.0.1:8000";
 
 function getNowActivity(dayInLife: Career["dayInLife"]) {
   const h = new Date().getHours();
@@ -796,7 +794,7 @@ export default function CarrerasPage() {
   useEffect(() => {
     const fetchCareers = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/v2/careers`);
+        const res = await apiFetch(`/api/v2/careers`);
         if (!res.ok) throw new Error("API error");
         const data = await res.json();
         if (data.careers && data.careers.length > 0) {

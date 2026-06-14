@@ -39,29 +39,31 @@ const LABS_BY_CAREER: Record<string, Lab[]> = {
   ],
   enfermeria: [
     {
-<<<<<<< Updated upstream
-      nameKey: "labs.arquitectura.tallerArquitectura.name",
-      descKey: "labs.arquitectura.tallerArquitectura.desc",
-      img: `${BASE}/descubre-utp/sites/consideracion/files/noticias/TALLER%20DE%20ARQUITECTURA.jpg`,
-    },
-    {
-      nameKey: "labs.arquitectura.salaBIM.name",
-      descKey: "labs.arquitectura.salaBIM.desc",
-      img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/SALA%20BIM%201.jpg`,
-=======
-      name: "Hospital Simulado",
-      desc: "Entorno innovador con simuladores avanzados para prácticas de enfermería y ciencias de la salud.",
+      nameKey: "labs.enfermeria.hospitalSimulado.name",
+      descKey: "labs.enfermeria.hospitalSimulado.desc",
       img: `${BASE}/descubre-utp/sites/consideracion/files/noticias/HOSPITAL%20SIMULADO_1%202.jpg`,
     },
     {
-      name: "Sala de Simulación Compleja Ginecobstetra",
-      desc: "Espacio para practicar cuidado materno-infantil con simuladores reales de alta fidelidad.",
+      nameKey: "labs.enfermeria.salaSimulacionGinecobstetra.name",
+      descKey: "labs.enfermeria.salaSimulacionGinecobstetra.desc",
       img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/Sala%20de%20Simulaci%C3%B3n%20Compleja%20-%20%20Obestricia%201.jpg`,
     },
     {
-      name: "Lab. Organización y Función del Cuerpo Humano",
-      desc: "Anatomía y fisiología con tecnología avanzada y disección virtual en 3D.",
+      nameKey: "labs.enfermeria.labOrganizacion.name",
+      descKey: "labs.enfermeria.labOrganizacion.desc",
       img: `${BASE}/descubre-utp/sites/consideracion/files/noticias/LAB%20DE%20ORGANIZACI%C3%93N%20Y%20FUNCI%C3%93N%20DEL%20CUERPO%20HUMANO_1%202.jpg`,
+    },
+  ],
+  "ingenieria-biomedica": [
+    {
+      nameKey: "labs.ingenieriaBiomedica.hospitalSimulado.name",
+      descKey: "labs.ingenieriaBiomedica.hospitalSimulado.desc",
+      img: `${BASE}/descubre-utp/sites/consideracion/files/noticias/HOSPITAL%20SIMULADO_1%202.jpg`,
+    },
+    {
+      nameKey: "labs.ingenieriaBiomedica.labMecatronica.name",
+      descKey: "labs.ingenieriaBiomedica.labMecatronica.desc",
+      img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/LAB.%20DE%20MECATR%C3%93NICA%201.jpg`,
     },
   ],
   odontologia: [
@@ -155,15 +157,14 @@ const LABS_BY_CAREER: Record<string, Lab[]> = {
   ],
   "ingenieria-biomedica": [
     {
-      name: "Hospital Simulado",
-      desc: "Entorno con equipos médicos avanzados para el diseño y prueba de dispositivos biomédicos.",
+      nameKey: "labs.ingenieriaBiomedica.hospitalSimulado.name",
+      descKey: "labs.ingenieriaBiomedica.hospitalSimulado.desc",
       img: `${BASE}/descubre-utp/sites/consideracion/files/noticias/HOSPITAL%20SIMULADO_1%202.jpg`,
     },
     {
-      name: "Laboratorio de Mecatrónica",
-      desc: "Laboratorio multidisciplinario para el desarrollo de prótesis, dispositivos y sistemas médicos inteligentes.",
+      nameKey: "labs.ingenieriaBiomedica.labMecatronica.name",
+      descKey: "labs.ingenieriaBiomedica.labMecatronica.desc",
       img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/LAB.%20DE%20MECATR%C3%93NICA%201.jpg`,
->>>>>>> Stashed changes
     },
   ],
   derecho: [
@@ -180,25 +181,14 @@ const LABS_BY_CAREER: Record<string, Lab[]> = {
   ],
   arquitectura: [
     {
-<<<<<<< Updated upstream
-      nameKey: "labs.gastronomia.labTecnicasDieteticas.name",
-      descKey: "labs.gastronomia.labTecnicasDieteticas.desc",
-      img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/Laboratorio%20de%20Nutrici%C3%B3n%20y%20Diet%C3%A9tica%201.jpg`,
-    },
-    {
-      nameKey: "labs.gastronomia.labProcesosIndustriales.name",
-      descKey: "labs.gastronomia.labProcesosIndustriales.desc",
-      img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/LAB%20DE%20PROCESOS%20INDUSTRIALES%203.jpg`,
-=======
-      name: "Taller de Arquitectura",
-      desc: "Ambiente especializado equipado para el diseño y realización de maquetas basadas en proyectos de clase.",
+      nameKey: "labs.arquitectura.tallerArquitectura.name",
+      descKey: "labs.arquitectura.tallerArquitectura.desc",
       img: `${BASE}/descubre-utp/sites/consideracion/files/noticias/TALLER%20DE%20ARQUITECTURA.jpg`,
     },
     {
-      name: "Sala BIM",
-      desc: "Espacio con tecnología avanzada y modelos 3D para proyectos de construcción y diseño arquitectónico.",
+      nameKey: "labs.arquitectura.salaBIM.name",
+      descKey: "labs.arquitectura.salaBIM.desc",
       img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/SALA%20BIM%201.jpg`,
->>>>>>> Stashed changes
     },
   ],
   "ingenieria-civil": [
@@ -343,35 +333,20 @@ const LABS_BY_CAREER: Record<string, Lab[]> = {
       img: `${BASE}/descubre-utp/sites/consideracion/files/noticias/SALA%20DESIGN%20THINKING%203.jpg`,
     },
     {
-<<<<<<< Updated upstream
       nameKey: "labs.software.labMecatronica.name",
       descKey: "labs.software.labMecatronica.desc",
-=======
-      name: "Laboratorio de Mecatrónica",
-      desc: "Laboratorio multidisciplinario para el desarrollo de software embebido y sistemas robóticos.",
->>>>>>> Stashed changes
       img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/LAB.%20DE%20MECATR%C3%93NICA%201.jpg`,
     },
   ],
   "ciencia-computacion": [
     {
-<<<<<<< Updated upstream
-      nameKey: "labs.psicologia.camaraGesell.name",
-      descKey: "labs.psicologia.camaraGesell.desc",
-      img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/SALA%20GESSEL%201.jpg`,
-    },
-    {
-      nameKey: "labs.psicologia.salaDesignThinking.name",
-      descKey: "labs.psicologia.salaDesignThinking.desc",
-=======
-      name: "Sala con Macs",
-      desc: "Ambientes Apple para investigación en inteligencia artificial, machine learning y cómputo científico.",
+      nameKey: "labs.cienciaComputacion.salaMacs.name",
+      descKey: "labs.cienciaComputacion.salaMacs.desc",
       img: `${BASE}/descubre-utp/sites/consideracion/files/imagenes/LABORATORIO%20DE%20COMPUTADORAS%20MAC%201.jpg`,
     },
     {
-      name: "Sala Design Thinking",
-      desc: "Espacio colaborativo para innovación en algoritmos y resolución de problemas complejos.",
->>>>>>> Stashed changes
+      nameKey: "labs.cienciaComputacion.salaDesignThinking.name",
+      descKey: "labs.cienciaComputacion.salaDesignThinking.desc",
       img: `${BASE}/descubre-utp/sites/consideracion/files/noticias/SALA%20DESIGN%20THINKING%203.jpg`,
     },
   ],

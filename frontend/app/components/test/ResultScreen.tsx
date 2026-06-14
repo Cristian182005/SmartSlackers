@@ -2,14 +2,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import AvatarCustomizer from "@/app/components/avatar/AvatarCustomizer";
-<<<<<<< Updated upstream
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, addDoc, serverTimestamp, getDoc, doc } from "firebase/firestore";
 import { auth, db } from "@/src/firebase/config";
 import { trackBadgeEvent, showBadgeNotification } from "@/src/services/badgeService";
-=======
 import type { Career } from "@/types/avatar";
->>>>>>> Stashed changes
 
 type Result = {
   title?: string; desc?: string;

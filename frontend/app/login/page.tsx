@@ -93,6 +93,9 @@ export default function LoginPage() {
       const avatarExists = await hasAvatar(result.user.uid);
       setSuccessMessage("Inicio de sesión exitoso");
       setShowSuccess(true);
+      setSuccessMessage("Inicio de sesión exitoso");
+      setShowSuccess(true);
+      const avatarExists = await hasAvatar(result.user.uid);
       router.push(avatarExists ? "/" : "/avatar-setup");
     } catch (error: any) {
       setError(error.message);

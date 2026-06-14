@@ -7,16 +7,10 @@ import {
   trackBadgeEvent,
 } from "@/src/services/badgeService";
 import { onAuthStateChanged } from "firebase/auth";
-import {
-  deleteDoc,
-  doc,
-  getDoc,
-  serverTimestamp,
-  setDoc,
-} from "firebase/firestore";
-import { motion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { auth, db } from "../../src/firebase/config";
+import { auth } from "../../src/firebase/config";
+import { db } from "../../src/firebase/config";
+import { doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "firebase/firestore";
+import { trackBadgeEvent, showBadgeNotification } from "@/src/services/badgeService";
 
 type Message = {
   role: "user" | "assistant";
